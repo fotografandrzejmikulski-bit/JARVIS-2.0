@@ -16,6 +16,11 @@
     "experiments": {
       "typedRoutes": true
     },
+    "extra": {
+      "eas": {
+        "projectId": "27a336a6-0bc8-4fd4-8fda-386f2d5cc136"
+      }
+    },
     "android": {
       "package": "com.jarvis.commandos",
       "versionCode": 2,
