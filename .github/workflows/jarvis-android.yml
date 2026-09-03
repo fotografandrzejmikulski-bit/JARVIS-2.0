@@ -8,6 +8,9 @@ on:
 permissions:
   contents: read
 
+env:
+  EXPO_ACCOUNT: mojealterego
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,12 +40,6 @@ jobs:
       - name: Verify TypeScript
         run: npx tsc --noEmit
       - name: Initialize or link EAS project
-        run: |
-          ACCOUNT=$(eas whoami)
-          if [ -z "$ACCOUNT" ]; then
-            echo "Unable to determine Expo account from EXPO_TOKEN."
-            exit 1
-          fi
-          eas init --account "$ACCOUNT" --non-interactive
+        run: eas init --account "$EXPO_ACCOUNT" --non-interactive
       - name: Build Android APK
         run: eas build --platform android --profile preview --non-interactive --no-wait
