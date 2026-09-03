@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "JARVIS 2.0",
+    "slug": "jarvis-2-android",
+    "version": "3.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "scheme": "jarvis",
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-audio",
+      "expo-notifications"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "android": {
+      "package": "com.jarvis.commandos",
+      "versionCode": 2,
+      "permissions": [
+        "RECORD_AUDIO",
+        "POST_NOTIFICATIONS",
+        "VIBRATE"
+      ]
+    }
+  }
+}
