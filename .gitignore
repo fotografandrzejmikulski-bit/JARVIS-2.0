@@ -1,0 +1,10 @@
+node_modules/
+.expo/
+.env
+.env.*
+!.env.example
+jarvis-state.json
+*.log
+.DS_Store
+android/.gradle/
+android/local.properties
