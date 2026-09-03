@@ -19,8 +19,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: npm
-          cache-dependency-path: jarvis-2-android/package.json
       - name: Check Expo token
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
@@ -36,5 +34,15 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
       - name: Install dependencies
         run: npm install
+      - name: Verify TypeScript
+        run: npx tsc --noEmit
+      - name: Initialize or link EAS project
+        run: |
+          ACCOUNT=$(eas whoami)
+          if [ -z "$ACCOUNT" ]; then
+            echo "Unable to determine Expo account from EXPO_TOKEN."
+            exit 1
+          fi
+          eas init --account "$ACCOUNT" --non-interactive
       - name: Build Android APK
         run: eas build --platform android --profile preview --non-interactive --no-wait
